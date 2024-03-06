@@ -43,9 +43,7 @@ export default function editUser() {
 
   return (
     <main>
-      <Head>
-        <title>{pageTitle}</title>
-      </Head>
+        <title>{pageTitle}</title>      
       {/* {loading?<Spinner/>:( */}
         <Form
           submitBtnLable="Update"
