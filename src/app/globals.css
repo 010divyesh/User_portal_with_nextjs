@@ -1,0 +1,11 @@
+.background-container {
+  /* border: 2px solid #c8c7db; */
+  display: flex;
+  flex-direction: column;
+  /* height: 100vh; */
+  /* background-color: #d6d7ef; */
+}
+
+.table{
+  text-align: center;
+}

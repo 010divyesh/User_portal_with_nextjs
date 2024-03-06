@@ -1,0 +1,15 @@
+.spinner-container {
+  position: fixed;
+  top: 0;
+  left: 18px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner-wrapper {
+  width: 100px;
+  height: 100px;
+}
