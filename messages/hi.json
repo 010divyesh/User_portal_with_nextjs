@@ -1,0 +1,28 @@
+{
+  "Index":{
+    
+    "Table": {
+      "app_title": "जनसंख्या सूची",
+       "create_button": "बनाएँ",
+       "user_id": "आईडी",
+       "user_name": "नाम",
+       "user_age": "उम्र",
+       "user_gender": "लिंग",
+       "user_country": "देश",
+       "created": "बनाया गया",
+       "modified": "संशोधित",
+       "option": "अधिक विकल्प",
+       "edit": "संपादित करें",
+       "delete": "हटाएं"
+    },
+    "Form":{
+      "name":"नाम",
+       "age": "उम्र",
+       "gender": "लिंग",
+       "country": "देश",
+       "choose": "चुनें...",
+       "clear": "स्पष्ट",
+       "cancle": "रद्द करें"
+    }
+  }
+}

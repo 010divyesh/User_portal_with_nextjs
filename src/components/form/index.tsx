@@ -4,6 +4,7 @@ import Link from "next/link";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
 import { countries, genders } from "./config.js";
+import {  useTranslations } from "next-intl";
 
 interface props {
   submitBtnLable: string;
@@ -24,6 +25,12 @@ export default function Form({
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
+
+  const t = useTranslations('Index.Form')
+  // const messages = useMessages();
+  // const locale  = useLocale();
+
+
 
   const save = (event: React.SyntheticEvent) => {
     let user: userDef = { name, age, gender, country };
@@ -50,6 +57,7 @@ export default function Form({
 
   return (
     <main>
+      {/* <NextIntlClientProvider > */}
       <div className="container my-3">
         <h4 className="text-center">{title}</h4>
         {loading ? (
@@ -57,7 +65,7 @@ export default function Form({
         ) : (
           <form onSubmit={save} className="mt-4">
             <div className="row mb-3">
-              <label className="col-sm-2 col-form-label">Name</label>
+              <label className="col-sm-2 col-form-label">{t('name')}</label>
               <div className="col-sm-10">
                 <input
                   type="text"
@@ -71,7 +79,7 @@ export default function Form({
               </div>
             </div>
             <div className="row mb-3">
-              <label className="col-sm-2 col-form-label">Age</label>
+              <label className="col-sm-2 col-form-label">{t('age')}</label>
               <div className="col-sm-10">
                 <input
                   type="number"
@@ -85,7 +93,7 @@ export default function Form({
               </div>
             </div>
             <div className="row mb-3">
-              <label className="col-sm-2 col-form-label">Gender</label>
+              <label className="col-sm-2 col-form-label">{t('gender')}</label>
               <div className="col-sm-10">
                 {genders.map((item, index) => (
                   <div key={index} className="form-check">
@@ -110,7 +118,7 @@ export default function Form({
             </div>
             <div className="row mb-3">
               <label htmlFor="inputName" className="col-sm-2 col-form-label">
-                Country
+              {t('country')}
               </label>
               <div className="col-sm-10">
                 <select
@@ -122,7 +130,7 @@ export default function Form({
                   onChange={(event) => setCountry(event.currentTarget.value)}
                 >
                   <option selected disabled value="">
-                    Choose...
+                  {t('choose')}
                   </option>
                   {countries.map((item, index) => (
                     <option key={index} value={item.value}>
@@ -144,13 +152,13 @@ export default function Form({
                   className="btn btn-warning"
                   onClick={clearForm}
                 >
-                  CLEAR
+                  {t('clear')}
                 </button>
               </div>
               <div className="me-2 mt-3">
                 <Link href="/">
                   <button type="button" className="btn btn-danger">
-                    CANCEL
+                  {t('cancle')}
                   </button>
                 </Link>
               </div>
@@ -159,6 +167,7 @@ export default function Form({
         )}
       </div>
       {loading && <Spinner />}
+      {/* </NextIntlClientProvider> */}
     </main>
   );
 }

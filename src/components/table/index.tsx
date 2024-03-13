@@ -1,9 +1,14 @@
+"use client"
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { userDef } from "../types";
 import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
 import "./style.css";
+import { useTranslations } from "next-intl";
+
+
+
 
 export default function Table() {
   const [users, setUsers] = useState<userDef[]>([]);
@@ -12,10 +17,32 @@ export default function Table() {
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 5;
 
+  // const locale = useLocale();
+  const t = useTranslations('Index.Table')
+
+
   const fetchData = async () => {
     setLoading(true);
     const res = await axios.get("/users");
-    const sortedUsers = res.data.items.sort((a: userDef, b: userDef) =>
+    let users = res.data.items;
+    users.forEach(
+      (user: {
+        created: string;
+        _created: number;
+        modified: string;
+        _modified: number;
+      }) => {
+        user.created = new Date(user._created * 1000).toLocaleDateString(
+          "en-IN",
+          { day: "numeric", month: "long", year: "numeric" }
+        );
+        user.modified = new Date(user._modified * 1000).toLocaleDateString(
+          "en-IN",
+          { day: "numeric", month: "long", year: "numeric" }
+        );
+      }
+    );
+    const sortedUsers = users.sort((a: { name: string }, b: { name: string }) =>
       a.name.localeCompare(b.name)
     );
     setUsers(sortedUsers);
@@ -60,9 +87,10 @@ export default function Table() {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
+    // <NextIntlClientProvider >
     <main>
       <div className="container">
-        <h5 className="text-center mt-2">Population List</h5>
+        <h5 className="text-center mt-2">{t('app_title')}</h5>
         {loading ? (
           <Spinner />
         ) : (
@@ -77,18 +105,20 @@ export default function Table() {
             </div>
             <Link href="/Add-User">
               <button className="btn btn-primary" type="submit">
-                Create
+                {t('create_button')}
               </button>
             </Link>
             <table className="table mt-3 table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Gender</th>
-                  <th scope="col">Country</th>
-                  <th scope="col">More Options</th>
+                  <th scope="col">{t('user_id')}</th>
+                  <th scope="col">{t('user_name')}</th>
+                  <th scope="col">{t('user_age')}</th>
+                  <th scope="col">{t('user_gender')}</th>
+                  <th scope="col">{t('user_country')}</th>
+                  <th scope="col">{t('created')}</th>
+                  <th scope="col">{t('modified')}</th>
+                  <th scope="col">{t('option')}</th>
                 </tr>
               </thead>
               <tbody>
@@ -99,6 +129,8 @@ export default function Table() {
                     <td>{user.age}</td>
                     <td>{user.gender}</td>
                     <td>{user.country}</td>
+                    <td>{user.created}</td>
+                    <td>{user.modified}</td>
                     <td>
                       <div className="dropdown">
                         <button
@@ -119,7 +151,7 @@ export default function Table() {
                                   filter: "invert(100%)",
                                 }}
                               />
-                              Edit
+                              {t('edit')}
                             </a>
                           </li>
                           <li>
@@ -135,7 +167,7 @@ export default function Table() {
                                   filter: "invert(100%)",
                                 }}
                               />
-                              Delete
+                              {t('delete')}
                             </a>
                           </li>
                         </ul>
@@ -163,7 +195,12 @@ export default function Table() {
                 {Array.from({
                   length: Math.ceil(filteredUsers.length / usersPerPage),
                 }).map((_, index) => (
-                  <li key={index} className={`page-item ${currentPage === index + 1 ? "active" : ""}`}>
+                  <li
+                    key={index}
+                    className={`page-item ${
+                      currentPage === index + 1 ? "active" : ""
+                    }`}
+                  >
                     <Link
                       onClick={() => paginate(index + 1)}
                       className="page-link"
@@ -196,5 +233,6 @@ export default function Table() {
         )}
       </div>
     </main>
+    // </NextIntlClientProvider>
   );
 }

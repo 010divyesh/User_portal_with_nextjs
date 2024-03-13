@@ -4,4 +4,6 @@ export interface userDef {
   age:string;
   gender:string;
   country:string;
+  created?:string;
+  modified?:string;
 }
