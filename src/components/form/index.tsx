@@ -72,7 +72,7 @@ export default function Form({
                   className="form-control"
                   name="name"
                   required
-                  placeholder="Enter your name"
+                  placeholder={t('enter_name')}
                   onChange={(event) => setName(event.currentTarget.value)}
                   value={name}
                 />
@@ -86,7 +86,7 @@ export default function Form({
                   name="age"
                   className="form-control"
                   required
-                  placeholder="Enter your age"
+                  placeholder={t('enter_age')}
                   onChange={(event) => setAge(event.currentTarget.value)}
                   value={age}
                 />

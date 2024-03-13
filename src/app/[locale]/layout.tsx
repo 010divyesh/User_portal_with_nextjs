@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.css";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import { NextIntlClientProvider, useLocale } from "next-intl";
+import { NextIntlClientProvider } from "next-intl";
 import {useMessages} from 'next-intl';
 
 

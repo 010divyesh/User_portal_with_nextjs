@@ -4,10 +4,14 @@ import Form from "@/components/form";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function AddUser() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  const t = useTranslations('Index.add_user')
+
 
   const save = async (user: userDef) => {
     setLoading(true);
@@ -22,8 +26,8 @@ export default function AddUser() {
     <main>
         <title>{pageTitle}</title>
       <Form
-        submitBtnLable="ADD"
-        title="ADD USER"
+        submitBtnLable={t('sub_leble')}
+        title={t('page_title')}
         onSave={save}
         loading={loading}
       />

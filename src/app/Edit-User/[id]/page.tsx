@@ -5,8 +5,8 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { userDef } from "@/components/types";
 import { useEffect, useState } from "react";
-import Head from "next/head";
-import Spinner from "@/components/Spinner";
+import { useTranslations } from "next-intl";
+
 
 export default function editUser() {
   const [loading, setLoading] = useState(true);
@@ -18,6 +18,8 @@ export default function editUser() {
   });
   let { id } = useParams();
   const router = useRouter();
+
+  const t = useTranslations('Index.edit_user')
 
   let fetchData = async () => {
     setLoading(true);
@@ -46,8 +48,8 @@ export default function editUser() {
         <title>{pageTitle}</title>      
       {/* {loading?<Spinner/>:( */}
         <Form
-          submitBtnLable="Update"
-          title="EDIT USER"
+          submitBtnLable={t('sub_leble')}
+          title={t('page_title')}
           onSave={save}
           user={user}
           loading={loading}

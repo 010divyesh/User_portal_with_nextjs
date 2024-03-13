@@ -1,5 +1,6 @@
 {
   "Index":{
+    
     "Table": {
       "app_title": "Population List",
       "create_button": "Create",
@@ -21,7 +22,17 @@
       "country":"Country",
       "choose":"Choose...",
       "clear":"CLEAR",
-      "cancle":"CANCEL"
+      "cancle":"CANCEL",
+      "enter_name":"Enter your name",
+      "enter_age":"Enter your age"
+    },
+    "add_user":{
+      "sub_leble":"ADD",
+      "page_title":"ADD USER"
+    },
+    "edit_user":{
+      "sub_leble":"Update",
+      "page_title":"EDIT USER"
     }
   }
   }
