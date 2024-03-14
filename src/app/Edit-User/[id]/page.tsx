@@ -50,7 +50,7 @@ export default function editUser() {
         <Form
           submitBtnLable={t('sub_leble')}
           title={t('page_title')}
-          onSave={save}
+          save={save}
           user={user}
           loading={loading}
         />

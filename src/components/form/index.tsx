@@ -1,173 +1,187 @@
-"use client";
-import React, { useEffect, useState } from "react";
+"use client"
+import React from "react";
+import { useTranslations } from "next-intl";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
 import Link from "next/link";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
 import { countries, genders } from "./config.js";
-import {  useTranslations } from "next-intl";
+// import "./style.css";
 
 interface props {
   submitBtnLable: string;
-  title: string;
+  title?: string;
   user?: userDef;
-  onSave: (user: userDef) => void;
+
   loading?: boolean;
+  save: (user: userDef) => void; // Define the save function type
 }
 
-export default function Form({
+const SignupSchema = Yup.object().shape({
+  name: Yup.string().min(2).max(25).required("Please enter your name"),
+  age: Yup.number()
+    .min(16, "Please enter age greater than 16 ")
+    .max(60, "Please enter age less than 60")
+    .required("Please enter your age"),
+  gender: Yup.string().required("Please select a gender"),
+  country: Yup.string().required("Please select a gender"),
+});
+
+export default function UserForm({
   submitBtnLable,
-  onSave,
   user,
   title,
   loading,
+  save,
 }: props) {
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [gender, setGender] = useState("");
-  const [country, setCountry] = useState("");
-
-  const t = useTranslations('Index.Form')
-  // const messages = useMessages();
-  // const locale  = useLocale();
-
-
-
-  const save = (event: React.SyntheticEvent) => {
-    let user: userDef = { name, age, gender, country };
-    event.preventDefault();
-    // console.log(user)
-    onSave(user);
-  };
-
-  const clearForm = () => {
-    setName("");
-    setAge("");
-    setGender("");
-    setCountry("");
-  };
-
-  useEffect(() => {
-    if (user) {
-      setName(user.name);
-      setAge(user.age);
-      setGender(user.gender);
-      setCountry(user.country);
-    }
-  }, [user]);
-
+  const t = useTranslations('Index.Form');
   return (
     <main>
-      {/* <NextIntlClientProvider > */}
-      <div className="container my-3">
-        <h4 className="text-center">{title}</h4>
-        {loading ? (
-          <Spinner />
-        ) : (
-          <form onSubmit={save} className="mt-4">
-            <div className="row mb-3">
-              <label className="col-sm-2 col-form-label">{t('name')}</label>
-              <div className="col-sm-10">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  required
-                  placeholder={t('enter_name')}
-                  onChange={(event) => setName(event.currentTarget.value)}
-                  value={name}
-                />
-              </div>
-            </div>
-            <div className="row mb-3">
-              <label className="col-sm-2 col-form-label">{t('age')}</label>
-              <div className="col-sm-10">
-                <input
-                  type="number"
-                  name="age"
-                  className="form-control"
-                  required
-                  placeholder={t('enter_age')}
-                  onChange={(event) => setAge(event.currentTarget.value)}
-                  value={age}
-                />
-              </div>
-            </div>
-            <div className="row mb-3">
-              <label className="col-sm-2 col-form-label">{t('gender')}</label>
-              <div className="col-sm-10">
-                {genders.map((item, index) => (
-                  <div key={index} className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="gender"
-                      required
-                      value={item.value}
-                      checked={gender === item.value}
-                      onChange={(event) => setGender(event.currentTarget.value)}
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor={`gender${index}`}
-                    >
-                      {item.label}
+      <h3 className="text-center">{title}</h3>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Formik
+          initialValues={{
+            name: user ? user.name : "",
+            age: user ? user.age : "",
+            gender: user ? user.gender : "",
+            country: user ? user.country : "",
+          }}
+          validationSchema={SignupSchema}
+          onSubmit={save}
+        >
+          {({ errors, touched }) => (
+            <div className="container">
+              <div className="d-flex justify-content-center">
+                <Form
+                  className="row g-3 card mt-3 p-3 col-md-6"
+                  style={{ backgroundColor: "gainsboro" }}
+                >
+                  {/* for name */}
+                  <div>
+                    <label className="col-sm-2-col-form-label">
+                      {t("name")}
                     </label>
+                    <Field
+                      name="name"
+                      placeholder={t("enter_name")}
+                      className={`form-control ${
+                        touched.name && errors.name ? "is-invalid" : ""
+                      }`}
+                    />
+                    {errors.name && touched.name && (
+                      <div className="invalid-feedback">{errors.name}</div>
+                    )}
                   </div>
-                ))}
+
+                  {/* for age */}
+                  <div>
+                    <label className="col-sm-2-col-form-label">
+                      {t("age")}
+                    </label>
+                    <Field
+                      name="age"
+                      type="number"
+                      placeholder={t("enter_age")}
+                      className={`form-control ${
+                        touched.age && errors.age ? "is-invalid" : ""
+                      }`}
+                    />
+                    {errors.age && touched.age ? (
+                      <div className="invalid-feedback">{errors.age}</div>
+                    ) : null}
+                  </div>
+
+                  {/* for gender */}
+                  <div>
+                    <label className="col-sm-2-col-form-label">
+                      {t("gender")}
+                    </label>
+                    <div>
+                      {genders.map((gender) => (
+                        <label key={gender} className="form-check">
+                          <Field
+                            className="form-check-input"
+                            type="radio"
+                            name="gender"
+                            value={gender}
+                          />
+                          {gender}
+                        </label>
+                      ))}
+                    </div>
+                    {errors.gender && touched.gender ? (
+                      <div>{errors.gender}</div>
+                    ) : null}
+                    <div className="valid-feedback"></div>
+                  </div>
+
+                  {/* for country */}
+                  <div>
+                    <label className="col-sm-2-col-form-label">
+                      {t("country")}
+                    </label>
+                    <Field
+                      name="country"
+                      as="select"
+                      className={`form-select ${
+                        touched.country && errors.country ? "is-invalid" : ""
+                      }`}
+                    >
+                      <option selected disabled value="">
+                      {t("choose")}
+                      </option>
+                      {countries.map((country) => (
+                        <option key={country} value={country}>
+                          {country}
+                        </option>
+                      ))}
+                    </Field>
+                    {errors.country && touched.country ? (
+                      <div
+                        className="invalid-feedback"
+                        style={{ color: "red" }}
+                      >
+                        {errors.country}
+                      </div>
+                    ) : null}
+                  </div>
+
+                  {/* for buttons */}
+
+                  <div className="buttons">
+                    <div className="d-flex flex-row mb-3">
+                      <div className=" p-3">
+                        <button type="submit" className="btn btn-primary">
+                          {submitBtnLable}
+                        </button>
+                      </div>
+                      <div className="p-3">
+                        <button
+                          type="button"
+                          className="btn btn-warning"
+                          // onClick={clearForm}
+                        >
+                          {t("clear")}
+                        </button>
+                      </div>
+                      <div className="p-3 ">
+                        <Link href="/">
+                          <button type="button" className="btn btn-danger">
+                            {t("cancle")}
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Form>
               </div>
             </div>
-            <div className="row mb-3">
-              <label htmlFor="inputName" className="col-sm-2 col-form-label">
-              {t('country')}
-              </label>
-              <div className="col-sm-10">
-                <select
-                  id="inputState"
-                  className="form-select"
-                  name="country"
-                  required
-                  value={country}
-                  onChange={(event) => setCountry(event.currentTarget.value)}
-                >
-                  <option selected disabled value="">
-                  {t('choose')}
-                  </option>
-                  {countries.map((item, index) => (
-                    <option key={index} value={item.value}>
-                      {item.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="d-flex flex-row mb-3">
-              <div className="me-2 mt-3">
-                <button type="submit" className="btn btn-primary">
-                  {submitBtnLable}
-                </button>
-              </div>
-              <div className="me-2 mt-3">
-                <button
-                  type="submit"
-                  className="btn btn-warning"
-                  onClick={clearForm}
-                >
-                  {t('clear')}
-                </button>
-              </div>
-              <div className="me-2 mt-3">
-                <Link href="/">
-                  <button type="button" className="btn btn-danger">
-                  {t('cancle')}
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </form>
-        )}
-      </div>
-      {loading && <Spinner />}
-      {/* </NextIntlClientProvider> */}
+          )}
+        </Formik>
+      )}
     </main>
   );
 }

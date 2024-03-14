@@ -28,7 +28,7 @@ export default function AddUser() {
       <Form
         submitBtnLable={t('sub_leble')}
         title={t('page_title')}
-        onSave={save}
+        save={save}
         loading={loading}
       />
     </main>

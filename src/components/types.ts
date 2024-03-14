@@ -6,4 +6,5 @@ export interface userDef {
   country:string;
   created?:string;
   modified?:string;
+  user?:string;
 }
