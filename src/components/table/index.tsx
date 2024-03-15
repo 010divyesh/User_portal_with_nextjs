@@ -1,14 +1,11 @@
-"use client"
-import {Link} from "@/i18n";
+"use client";
+import { Link } from "@/i18n";
 import { useEffect, useState } from "react";
 import { userDef } from "../types";
 import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
 import "./style.css";
 import { useTranslations } from "next-intl";
-
-
-
 
 export default function Table() {
   const [users, setUsers] = useState<userDef[]>([]);
@@ -18,8 +15,7 @@ export default function Table() {
   const usersPerPage = 5;
 
   // const locale = useLocale();
-  const t = useTranslations('Index.Table')
-
+  const t = useTranslations("Index.Table");
 
   const fetchData = async () => {
     setLoading(true);
@@ -90,35 +86,46 @@ export default function Table() {
     // <NextIntlClientProvider >
     <main>
       <div className="container">
-        <h5 className="text-center mt-2">{t('app_title')}</h5>
+        <h5 className="text-center mt-2">{t("app_title")}</h5>
         {loading ? (
           <Spinner />
         ) : (
           <>
-            <div className="card col-2 mb-1 mx-auto me-5">
-              <input
-                type="text"
-                placeholder={t('search')}
-                value={searchInput}
-                onChange={handleChange}
-              ></input>
+            <div className="d-flex justify-content-between mb-3">
+              <div>
+                <Link href="/Add-User">
+                  <button className="btn btn-primary" type="submit">
+                    {t("create_button")}
+                  </button>
+                </Link>
+              </div>
+              <div className="input-group justify-content-end">
+                <span className="input-group-text">
+                  <img
+                    src="./icons/search.svg"
+                    alt="Search Icon"
+                    style={{ width: "20px", height: "25px" }}
+                  />
+                </span>
+                <input
+                  type="text"
+                  placeholder={t("search")}
+                  value={searchInput}
+                  onChange={handleChange}
+                ></input>
+              </div>
             </div>
-            <Link href="/Add-User">
-              <button className="btn btn-primary" type="submit">
-                {t('create_button')}
-              </button>
-            </Link>
-            <table className="table mt-3 table-bordered">
+            <table className="table mt-4 table-bordered">
               <thead>
                 <tr>
-                  <th scope="col">{t('user_id')}</th>
-                  <th scope="col">{t('user_name')}</th>
-                  <th scope="col">{t('user_age')}</th>
-                  <th scope="col">{t('user_gender')}</th>
-                  <th scope="col">{t('user_country')}</th>
-                  <th scope="col">{t('created')}</th>
-                  <th scope="col">{t('modified')}</th>
-                  <th scope="col">{t('option')}</th>
+                  <th scope="col">{t("user_id")}</th>
+                  <th scope="col">{t("user_name")}</th>
+                  <th scope="col">{t("user_age")}</th>
+                  <th scope="col">{t("user_gender")}</th>
+                  <th scope="col">{t("user_country")}</th>
+                  <th scope="col">{t("created")}</th>
+                  <th scope="col">{t("modified")}</th>
+                  <th scope="col">{t("option")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -151,7 +158,7 @@ export default function Table() {
                                   filter: "invert(100%)",
                                 }}
                               />
-                              {t('edit')}
+                              {t("edit")}
                             </Link>
                           </li>
                           <li>
@@ -167,7 +174,7 @@ export default function Table() {
                                   filter: "invert(100%)",
                                 }}
                               />
-                              {t('delete')}
+                              {t("delete")}
                             </a>
                           </li>
                         </ul>
