@@ -1,9 +1,14 @@
 "use client"
 import React, { useState } from "react";
-import Link from "next/link";
+import {Link} from "@/i18n";
+import { useTranslations } from "next-intl";
+import LocalSwitcher from "../local-switcher";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const t = useTranslations('Index.navbar')
+
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -17,7 +22,7 @@ export default function Navbar() {
     <nav className="navbar navbar-dark bg-dark mb-2">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
-          USER PORTAL
+          {t('title')}
         </Link>
         <button className="navbar-toggler" type="button" onClick={toggleMenu}>
           <span className="navbar-toggler-icon" />
@@ -30,24 +35,24 @@ export default function Navbar() {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title">
-              User Portal
+              {t('nav_title')}
             </h5>
-            {/* <button
-              type="button"
-              className="btn-close btn-close-white"
-              onClick={toggleMenu}
-            /> */}
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item" onClick={closeMenu}>
                 <Link className="nav-link active" href="/">
-                  Home
+                {t('nav_home')}
                 </Link>
               </li>
               <li className="nav-item" onClick={closeMenu}>
                 <Link className="nav-link active" href="/Summary">
-                  Summary
+                {t('nav_summary')}
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link active" href="/">
+                <LocalSwitcher/>
                 </Link>
               </li>
             </ul>
