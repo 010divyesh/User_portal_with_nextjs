@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "@/components/api";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
+import { useTranslations } from "next-intl";
 
 export default function getSummary() {
   const [loading, setLoading] = useState(true);
@@ -13,6 +14,9 @@ export default function getSummary() {
   const [genderData, setGenderData] = useState<{ [gender: string]: number }>(
     {}
   );
+
+  const t = useTranslations('Index.summary')
+
 
   const fetchData = async () => {
     setLoading(true);
@@ -56,11 +60,11 @@ export default function getSummary() {
   return (
     <main>
      
-        <title>SUMMARY PAGE</title>
+        <title>{t('page_head')}</title>
       
       <div className="container">
         <h5 className="text-center mt-3">
-          <b>SUMMARY</b>
+          <b>{t('page_title')}</b>
         </h5>
         {/* <Link href="/" className=" d-md-flex justify-content-md-end">
           <button className=" btn btn-primary " type="submit">
@@ -71,15 +75,15 @@ export default function getSummary() {
           <Spinner />
         ) : (
           <>
-            <div className="table1 d-flex justify-content-center align-items-center">
+            <div className="table1 d-flex justify-content-center text-center">
               <table
                 className="table table-bordered mt-3"
                 style={{ width: "40%" }}
               >
                 <thead>
                   <tr>
-                    <th scope="col">Country</th>
-                    <th scope="col">Count</th>
+                    <th scope="col">{t('country')}</th>
+                    <th scope="col">{t('count')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -96,15 +100,15 @@ export default function getSummary() {
                 </tbody>
               </table>
             </div>
-            <div className="table1 d-flex justify-content-center align-items-center">
+            <div className="table1 d-flex justify-content-center text-center">
               <table
                 className="table table-bordered mt-5"
                 style={{ width: "40%" }}
               >
                 <thead>
                   <tr>
-                    <th scope="col">Gender</th>
-                    <th scope="col">Count</th>
+                    <th scope="col">{t('gender')}</th>
+                    <th scope="col">{t('gender_count')}</th>
                   </tr>
                 </thead>
                 <tbody>

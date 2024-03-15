@@ -1,5 +1,5 @@
 "use client"
-import Link from "next/link";
+import {Link} from "@/i18n";
 import { useEffect, useState } from "react";
 import { userDef } from "../types";
 import Spinner from "@/components/Spinner";
@@ -98,7 +98,7 @@ export default function Table() {
             <div className="card col-2 mb-1 mx-auto me-5">
               <input
                 type="text"
-                placeholder="Search items"
+                placeholder={t('search')}
                 value={searchInput}
                 onChange={handleChange}
               ></input>
@@ -139,7 +139,7 @@ export default function Table() {
                         ></button>
                         <ul className="dropdown-menu">
                           <li>
-                            <a
+                            <Link
                               className="dropdown-item"
                               href={`/Edit-User/${user._uuid}`}
                             >
@@ -152,7 +152,7 @@ export default function Table() {
                                 }}
                               />
                               {t('edit')}
-                            </a>
+                            </Link>
                           </li>
                           <li>
                             <a

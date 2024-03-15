@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "bootstrap/dist/css/bootstrap.css";
-import "./globals.css";
 import Navbar from "@/components/navbar";
-import { NextIntlClientProvider } from "next-intl";
-import {useMessages} from 'next-intl';
+import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
+import "bootstrap/dist/css/bootstrap.css";
 
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "USERS PORTAL",
@@ -25,17 +24,28 @@ export default function RootLayout({
   children,
   params:{ locale },
 }: Readonly<RootLayoutProps>) {
-  
-   const messages = useMessages();
-  
-  return (
+  const messages = useMessages();
+  // const locale = useLocale();
+  // if(params.locale !== locale){
+  //   notFound()
+  // }
+
+    return (
     <html lang={locale}>
       <body className={inter.className}>
       <NextIntlClientProvider locale={locale} messages={messages}>
-        {/* <Navbar/> */}
+        <Navbar/>
         <div className="background-container">{children}</div>
         </NextIntlClientProvider>
       </body>
-    </html>
-  );
-}
+    </html>);
+  }
+
+  
+// export default function RootLayout({
+//     children,
+//   }: Readonly<{
+//     children: React.ReactNode;
+//   }>) {
+//     return children;
+//   }

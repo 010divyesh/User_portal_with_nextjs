@@ -40,12 +40,9 @@ export default function editUser() {
     setLoading(false);
   }, [id]);
 
-
-  const pageTitle="Edit User";
-
   return (
     <main>
-        <title>{pageTitle}</title>      
+        <title>{t('page_title')}</title>      
       {/* {loading?<Spinner/>:( */}
         <Form
           submitBtnLable={t('sub_leble')}

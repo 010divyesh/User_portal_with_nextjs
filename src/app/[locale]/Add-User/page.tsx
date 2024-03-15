@@ -21,10 +21,10 @@ export default function AddUser() {
     router.push("/");
   };
 
-  const pageTitle = "Add User";
+ 
   return (
     <main>
-        <title>{pageTitle}</title>
+        <title>{t('page_title')}</title>
       <Form
         submitBtnLable={t('sub_leble')}
         title={t('page_title')}

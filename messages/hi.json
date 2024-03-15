@@ -13,7 +13,8 @@
        "modified": "संशोधित",
        "option": "अधिक विकल्प",
        "edit": "संपादित करें",
-       "delete": "हटाएं"
+       "delete": "हटाएं",
+       "search":"आइटम खोजें"
     },
     "Form":{
       "name":"नाम",
@@ -33,6 +34,20 @@
     "edit_user":{
       "sub_leble":"अद्यतन करें",
       "page_title":"उपयोगकर्ता संपादित करें"
+    },
+    "navbar":{
+      "title":"यूजर पोर्टल",
+      "nav_title":"यूजर पोर्टल",
+      "nav_home":"होम",
+      "nav_summary":"सारांश"
+    },
+    "summary":{
+      "page_head":"सारांश पृष्ठ",
+      "page_title":"सारांश",
+      "country":"देश",
+      "count":"गणना",
+      "gender":"लिंग",
+      "gender_count":"गणना"
     }
   }
 }

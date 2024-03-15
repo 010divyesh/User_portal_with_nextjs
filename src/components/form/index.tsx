@@ -1,4 +1,3 @@
-"use client"
 import React from "react";
 import { useTranslations } from "next-intl";
 import { Formik, Form, Field } from "formik";
@@ -35,7 +34,7 @@ export default function UserForm({
   loading,
   save,
 }: props) {
-  const t = useTranslations('Index.Form');
+  const t = useTranslations("Index.Form");
   return (
     <main>
       <h3 className="text-center">{title}</h3>
@@ -56,7 +55,7 @@ export default function UserForm({
             <div className="container">
               <div className="d-flex justify-content-center">
                 <Form
-                  className="row g-3 card mt-3 p-3 col-md-6"
+                  className="row g-3 card mt-2 p-3 col-md-6"
                   style={{ backgroundColor: "gainsboro" }}
                 >
                   {/* for name */}
@@ -152,13 +151,13 @@ export default function UserForm({
                   {/* for buttons */}
 
                   <div className="buttons">
-                    <div className="d-flex flex-row mb-3">
-                      <div className=" p-3">
+                    <div className="d-flex flex-row mb-2">
+                      <div className=" p-2">
                         <button type="submit" className="btn btn-primary">
                           {submitBtnLable}
                         </button>
                       </div>
-                      <div className="p-3">
+                      <div className="p-2">
                         <button
                           type="button"
                           className="btn btn-warning"
@@ -167,7 +166,7 @@ export default function UserForm({
                           {t("clear")}
                         </button>
                       </div>
-                      <div className="p-3 ">
+                      <div className="p-2 ">
                         <Link href="/">
                           <button type="button" className="btn btn-danger">
                             {t("cancle")}

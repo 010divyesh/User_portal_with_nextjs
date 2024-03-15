@@ -13,7 +13,8 @@
       "modified":"Modified",
       "option": "More Option",
       "edit": "Edit",
-      "delete": "Delete"
+      "delete": "Delete",
+      "search":"Search items"
     },
     "Form":{
       "name":"Name",
@@ -33,6 +34,20 @@
     "edit_user":{
       "sub_leble":"Update",
       "page_title":"EDIT USER"
+    },
+    "navbar":{
+      "title":"USER PORTAL",
+      "nav_title":"User Portal",
+      "nav_home":"Home",
+      "nav_summary":"Summary"
+    },
+    "summary":{
+      "page_head":"SUMMARY PAGE",
+      "page_title":"SUMMARY",
+      "country":"Country",
+      "count":"Count",
+      "gender":"Gender",
+      "gender_count":"Count"
     }
   }
   }
