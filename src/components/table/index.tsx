@@ -91,24 +91,21 @@ export default function Table() {
           <Spinner />
         ) : (
           <>
-            <div className="d-flex justify-content-between mb-3">
+            <div className="d-flex justify-content-between mb-4">
               <div>
-                <Link href="/Add-User">
-                  <button className="btn btn-primary" type="submit">
-                    {t("create_button")}
-                  </button>
-                </Link>
+              <Link href="/Add-User">
+                <button className="btn btn-primary" type="submit">
+                  {t("create_button")}
+                </button>
+              </Link>
               </div>
-              <div className="input-group justify-content-end">
+              <div className="input-group justify-content-end" style={{ maxWidth: "210px" }}>
                 <span className="input-group-text">
-                  <img
-                    src="./icons/search.svg"
-                    alt="Search Icon"
-                    style={{ width: "20px", height: "25px" }}
-                  />
+                  <img src="./icons/search.svg" />
                 </span>
                 <input
                   type="text"
+                  className="form-control"
                   placeholder={t("search")}
                   value={searchInput}
                   onChange={handleChange}

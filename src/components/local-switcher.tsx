@@ -16,7 +16,7 @@ export default function LocalSwitcher() {
   };
   return (
     <div className="d-flex flex-row align-items-center">
-    <p>Language</p>
+    <p className="pt-1">Language</p>
     <select
       defaultValue={localActive}
       className="default p-1  mx-4"

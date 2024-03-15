@@ -19,7 +19,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="navbar navbar-dark bg-dark mb-2">
+    <nav className="navbar navbar-dark bg-dark mb-3">
       <div className="container-fluid">
         <Link className="navbar-brand" href="/">
           {t('title')}
