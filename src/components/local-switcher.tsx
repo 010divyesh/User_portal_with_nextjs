@@ -15,17 +15,13 @@ export default function LocalSwitcher() {
     });
   };
   return (
-    <div className="d-flex flex-row align-items-center">
-    <p className="pt-1">Language</p>
-    <select
+   <div className="d-flex pt-1" style={{width:"60px",height:"35px"}}>
+    <img src="./icons/earth.svg" /><select
       defaultValue={localActive}
-      className="default p-1  mx-4"
       onChange={onSelectChange}
       disabled={isPending}
     >
       <option value="en">English</option>
       <option value="hi">Hindi</option>
-    </select>
-  </div>
-  );
-}
+    </select></div>
+)}
