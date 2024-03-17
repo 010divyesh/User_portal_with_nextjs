@@ -14,7 +14,11 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Op
+
+https://github.com/010divyesh/User_portal_with_nextjs/assets/124127489/164082f7-40c2-47e7-ae9f-81cb514cecf2
+
+en [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
