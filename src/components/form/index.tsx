@@ -6,13 +6,11 @@ import Link from "next/link";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
 import { countries, genders } from "./config.js";
-// import "./style.css";
 
 interface props {
   submitBtnLable: string;
   title?: string;
   user?: userDef;
-
   loading?: boolean;
   save: (user: userDef) => void; // Define the save function type
 }
@@ -34,6 +32,19 @@ export default function UserForm({
   loading,
   save,
 }: props) {
+
+  const clearForm = () => {
+    const initialValues = {
+      name: "",
+      age: "",
+      gender: "",
+      country: "",
+    };
+    // Reset form using Formik's resetForm function
+    formikRef.current?.resetForm({ values: initialValues });
+  };
+
+  const formikRef = React.useRef<any>(null);
   const t = useTranslations("Index.Form");
   return (
     <main>
@@ -42,6 +53,7 @@ export default function UserForm({
         <Spinner />
       ) : (
         <Formik
+        innerRef={formikRef}
           initialValues={{
             name: user ? user.name : "",
             age: user ? user.age : "",
@@ -161,7 +173,7 @@ export default function UserForm({
                         <button
                           type="button"
                           className="btn btn-warning"
-                          // onClick={clearForm}
+                          onClick={clearForm}
                         >
                           {t("clear")}
                         </button>

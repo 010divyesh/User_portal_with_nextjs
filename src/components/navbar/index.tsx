@@ -41,6 +41,11 @@ export default function Navbar() {
         >
           <div className="offcanvas-header">
             <h5 className="offcanvas-title">{t("nav_title")}</h5>
+            <button
+              type="button"
+              className="btn-close btn-close-white"
+              onClick={toggleMenu}
+            />
           </div>
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">

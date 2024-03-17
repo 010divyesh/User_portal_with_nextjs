@@ -1,0 +1,53 @@
+{
+    "Index":{
+      
+      "Table": {
+        "app_title": "Daftar Populasi",
+        "create_button": "Buat",
+        "user_id": "ID",
+        "user_name": "Nama",
+        "user_age": "Usia",
+        "user_gender": "Jenis Kelamin",
+        "user_country": "Negara",
+        "created":"Dibuat",
+        "modified":"Dimodifikasi",
+        "option": "Opsi Lainnya",
+        "edit": "Sunting",
+        "delete": "Hapus",
+        "search":"Cari item"
+      },
+      "Form":{
+        "name":"Nama",
+        "age":"Usia",
+        "gender":"Jenis Kelamin",
+        "country":"Negara",
+        "choose":"Pilih...",
+        "clear":"BERSIH",
+        "cancle":"BATAL",
+        "enter_name":"Masukkan nama Anda",
+        "enter_age":"Masukkan umur Anda"
+      },
+      "add_user":{
+        "sub_leble":"TAMBAHKAN",
+        "page_title":"TAMBAHKAN PENGGUNA"
+      },
+      "edit_user":{
+        "sub_leble":"Perbarui",
+        "page_title":"EDIT PENGGUNA"
+      },
+      "navbar":{
+        "title":"PORTAL PENGGUNA",
+        "nav_title":"Portal Pengguna",
+        "nav_home":"Rumah",
+        "nav_summary":"Ringkasan"
+      },
+      "summary":{
+        "page_head":"HALAMAN RINGKASAN",
+        "page_title":"RINGKASAN",
+        "country":"Negara",
+        "count":"Hitungan",
+        "gender":"Jenis Kelamin",
+        "gender_count":"Hitungan"
+      }
+    }
+    }

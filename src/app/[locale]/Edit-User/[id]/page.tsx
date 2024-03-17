@@ -37,7 +37,6 @@ export default function editUser() {
   useEffect(() => {
     setLoading(true);
     fetchData();
-    setLoading(false);
   }, [id]);
 
   return (
