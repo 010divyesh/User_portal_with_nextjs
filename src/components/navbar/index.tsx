@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link } from "@/i18n";
 import { useTranslations } from "next-intl";
 import LocalSwitcher from "../local-switcher";
+import classNames from "classnames";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -34,9 +35,8 @@ export default function Navbar() {
           <span className="navbar-toggler-icon" />
         </button>
         <div
-          className={`offcanvas offcanvas-end text-bg-dark ${
-            menuOpen ? "show" : ""
-          }`}
+          className={
+            classNames('offcanvas offcanvas-end text-bg-dark',{show:menuOpen})}
           tabIndex={-1}
         >
           <div className="offcanvas-header">

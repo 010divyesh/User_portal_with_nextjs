@@ -42,7 +42,6 @@ export default function editUser() {
   return (
     <main>
         <title>{t('page_title')}</title>      
-      {/* {loading?<Spinner/>:( */}
         <Form
           submitBtnLable={t('sub_leble')}
           title={t('page_title')}
@@ -50,7 +49,6 @@ export default function editUser() {
           user={user}
           loading={loading}
         />
-      {/* )} */}
     </main>
   );
 }

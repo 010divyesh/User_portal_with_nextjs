@@ -6,6 +6,7 @@ import Link from "next/link";
 import { userDef } from "@/components/types";
 import Spinner from "@/components/Spinner";
 import { countries, genders } from "./config.js";
+import classNames from "classnames";
 
 interface props {
   submitBtnLable: string;
@@ -78,9 +79,8 @@ export default function UserForm({
                     <Field
                       name="name"
                       placeholder={t("enter_name")}
-                      className={`form-control ${
-                        touched.name && errors.name ? "is-invalid" : ""
-                      }`}
+                      className={
+                        classNames('form-control',{'is-invalid':touched.name && errors.name})}
                     />
                     {errors.name && touched.name && (
                       <div className="invalid-feedback">{errors.name}</div>
@@ -96,9 +96,8 @@ export default function UserForm({
                       name="age"
                       type="number"
                       placeholder={t("enter_age")}
-                      className={`form-control ${
-                        touched.age && errors.age ? "is-invalid" : ""
-                      }`}
+                      className={
+                        classNames('form-control',{'is-invalid':touched.age && errors.age})}
                     />
                     {errors.age && touched.age ? (
                       <div className="invalid-feedback">{errors.age}</div>
@@ -137,9 +136,8 @@ export default function UserForm({
                     <Field
                       name="country"
                       as="select"
-                      className={`form-select ${
-                        touched.country && errors.country ? "is-invalid" : ""
-                      }`}
+                      className={
+                        classNames('form-select',{'is-invalid':touched.country && errors.country})}
                     >
                       <option selected disabled value="">
                       {t("choose")}

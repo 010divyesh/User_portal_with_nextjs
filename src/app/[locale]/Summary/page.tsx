@@ -34,7 +34,6 @@ export default function getSummary() {
     users.forEach((user) => {
       genderData[user.gender] = (genderData[user.gender] || 0) + 1;
     });
-    // console.log(genderData);
     setGenderData(genderData);
 
     // calculate country count
@@ -55,7 +54,6 @@ export default function getSummary() {
     }
   };
 
-  console.log(countryCounts, genderData);
 
   return (
     <main>
@@ -66,11 +64,7 @@ export default function getSummary() {
         <h5 className="text-center mt-3">
           <b>{t('page_title')}</b>
         </h5>
-        {/* <Link href="/" className=" d-md-flex justify-content-md-end">
-          <button className=" btn btn-primary " type="submit">
-            Back to Home Page
-          </button>
-        </Link> */}
+       
         {loading ? (
           <Spinner />
         ) : (

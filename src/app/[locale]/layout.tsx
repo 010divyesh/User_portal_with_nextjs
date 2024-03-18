@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/navbar";
-import { NextIntlClientProvider, useLocale, useMessages } from "next-intl";
+import { NextIntlClientProvider, useMessages } from "next-intl";
 import "bootstrap/dist/css/bootstrap.css";
 
 
@@ -25,10 +25,7 @@ export default function RootLayout({
   params:{ locale },
 }: Readonly<RootLayoutProps>) {
   const messages = useMessages();
-  // const locale = useLocale();
-  // if(params.locale !== locale){
-  //   notFound()
-  // }
+  
 
     return (
     <html lang={locale}>
@@ -42,10 +39,3 @@ export default function RootLayout({
   }
 
   
-// export default function RootLayout({
-//     children,
-//   }: Readonly<{
-//     children: React.ReactNode;
-//   }>) {
-//     return children;
-//   }

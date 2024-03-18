@@ -6,6 +6,7 @@ import Spinner from "@/components/Spinner";
 import axios from "@/components/api";
 import "./style.css";
 import { useTranslations } from "next-intl";
+import classNames from "classnames";
 
 export default function Table() {
   const [users, setUsers] = useState<userDef[]>([]);
@@ -14,7 +15,6 @@ export default function Table() {
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 5;
 
-  // const locale = useLocale();
   const t = useTranslations("Index.Table");
 
   const fetchData = async () => {
@@ -77,13 +77,11 @@ export default function Table() {
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
-  // console.log(indexOfFirstUser,indexOfLastUser,currentUsers)
 
   // Logic to change page
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
-    // <NextIntlClientProvider >
     <main>
       <div className="container">
         <h5 className="text-center mt-2">{t("app_title")}</h5>
@@ -93,13 +91,16 @@ export default function Table() {
           <>
             <div className="d-flex justify-content-between mb-4">
               <div>
-              <Link href="/Add-User">
-                <button className="btn btn-primary" type="submit">
-                  {t("create_button")}
-                </button>
-              </Link>
+                <Link href="/Add-User">
+                  <button className="btn btn-primary" type="submit">
+                    {t("create_button")}
+                  </button>
+                </Link>
               </div>
-              <div className="input-group justify-content-end" style={{ maxWidth: "210px" }}>
+              <div
+                className="input-group justify-content-end"
+                style={{ maxWidth: "210px" }}
+              >
                 <span className="input-group-text">
                   <img src="./icons/search.svg" />
                 </span>
@@ -159,7 +160,7 @@ export default function Table() {
                             </Link>
                           </li>
                           <li>
-                            <a
+                            <button
                               className="dropdown-item"
                               onClick={() => deleteUser(user)}
                             >
@@ -172,7 +173,7 @@ export default function Table() {
                                 }}
                               />
                               {t("delete")}
-                            </a>
+                            </button>
                           </li>
                         </ul>
                       </div>
@@ -185,25 +186,26 @@ export default function Table() {
             <nav style={{ display: "flex", justifyContent: "center" }}>
               <ul className="pagination">
                 <li
-                  className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+                  className={classNames("page-item", {
+                    disabled: currentPage === 1,
+                  })}
                 >
-                  <a
+                  <button
                     className="page-link"
-                    href="#"
                     onClick={() => paginate(currentPage - 1)}
                     aria-label="Previous"
                   >
                     <span aria-hidden="true">&laquo;</span>
-                  </a>
+                  </button>
                 </li>
                 {Array.from({
                   length: Math.ceil(filteredUsers.length / usersPerPage),
                 }).map((_, index) => (
                   <li
                     key={index}
-                    className={`page-item ${
-                      currentPage === index + 1 ? "active" : ""
-                    }`}
+                    className={classNames("page-item", {
+                      active: currentPage === index + 1,
+                    })}
                   >
                     <Link
                       onClick={() => paginate(index + 1)}
@@ -215,21 +217,19 @@ export default function Table() {
                   </li>
                 ))}
                 <li
-                  className={`page-item ${
-                    currentPage ===
-                    Math.ceil(filteredUsers.length / usersPerPage)
-                      ? "disabled"
-                      : ""
-                  }`}
+                  className={classNames("page-item", {
+                    disabled:
+                      currentPage ===
+                      Math.ceil(filteredUsers.length / usersPerPage),
+                  })}
                 >
-                  <a
+                  <button
                     className="page-link"
-                    href="#"
                     onClick={() => paginate(currentPage + 1)}
                     aria-label="Next"
                   >
                     <span aria-hidden="true">&raquo;</span>
-                  </a>
+                  </button>
                 </li>
               </ul>
             </nav>
@@ -237,6 +237,5 @@ export default function Table() {
         )}
       </div>
     </main>
-    // </NextIntlClientProvider>
   );
 }
