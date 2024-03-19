@@ -25,7 +25,12 @@
         "clear":"BERSIH",
         "cancle":"BATAL",
         "enter_name":"Masukkan nama Anda",
-        "enter_age":"Masukkan umur Anda"
+        "enter_age":"Masukkan umur Anda",
+        "genders": {
+          "male": "Laki-laki",
+          "female": "Perempuan",
+          "other": "Lainnya"
+        }
       },
       "add_user":{
         "sub_leble":"TAMBAHKAN",

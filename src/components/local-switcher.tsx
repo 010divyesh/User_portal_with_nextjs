@@ -14,15 +14,19 @@ export default function LocalSwitcher() {
       router.replace(`/${nextLocale}`);
     });
   };
+
   return (
-   <div className="d-flex pt-1" style={{width:"60px",height:"35px"}}>
-    <img src="./icons/earth.svg"/><select
-      defaultValue={localActive}
-      onChange={onSelectChange}
-      disabled={isPending}
-    >
-      <option value="en">English</option>
-      <option value="hi">Hindi</option>
-      <option value="id">Indonesian</option>
-    </select></div>
-)}
+    <div className="d-flex pt-1" style={{ width: "60px", height: "35px" }}>
+      <img src="./icons/earth.svg" />
+      <select
+        defaultValue={localActive}
+        onChange={onSelectChange}
+        disabled={isPending}
+      >
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="id">Indonesian</option>
+      </select>
+    </div>
+  );
+}

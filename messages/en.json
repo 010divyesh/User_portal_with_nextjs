@@ -1,6 +1,5 @@
 {
-  "Index":{
-    
+  "Index": {
     "Table": {
       "app_title": "Population List",
       "create_button": "Create",
@@ -9,45 +8,50 @@
       "user_age": "Age",
       "user_gender": "Gender",
       "user_country": "Country",
-      "created":"Created",
-      "modified":"Modified",
+      "created": "Created",
+      "modified": "Modified",
       "option": "More Option",
       "edit": "Edit",
       "delete": "Delete",
-      "search":"Search items"
+      "search": "Search items"
     },
-    "Form":{
-      "name":"Name",
-      "age":"Age",
-      "gender":"Gender",
-      "country":"Country",
-      "choose":"Choose...",
-      "clear":"CLEAR",
-      "cancle":"CANCEL",
-      "enter_name":"Enter your name",
-      "enter_age":"Enter your age"
+    "Form": {
+      "name": "Name",
+      "age": "Age",
+      "gender": "Gender",
+      "country": "Country",
+      "choose": "Choose...",
+      "clear": "CLEAR",
+      "cancle": "CANCEL",
+      "enter_name": "Enter your name",
+      "enter_age": "Enter your age",
+      "genders": {
+        "male": "Male",
+        "female": "Female",
+        "other": "Other"
+      }
     },
-    "add_user":{
-      "sub_leble":"ADD",
-      "page_title":"ADD USER"
+    "add_user": {
+      "sub_leble": "ADD",
+      "page_title": "ADD USER"
     },
-    "edit_user":{
-      "sub_leble":"Update",
-      "page_title":"EDIT USER"
+    "edit_user": {
+      "sub_leble": "Update",
+      "page_title": "EDIT USER"
     },
-    "navbar":{
-      "title":"USER PORTAL",
-      "nav_title":"User Portal",
-      "nav_home":"Home",
-      "nav_summary":"Summary"
+    "navbar": {
+      "title": "USER PORTAL",
+      "nav_title": "User Portal",
+      "nav_home": "Home",
+      "nav_summary": "Summary"
     },
-    "summary":{
-      "page_head":"SUMMARY PAGE",
-      "page_title":"SUMMARY",
-      "country":"Country",
-      "count":"Count",
-      "gender":"Gender",
-      "gender_count":"Count"
+    "summary": {
+      "page_head": "SUMMARY PAGE",
+      "page_title": "SUMMARY",
+      "country": "Country",
+      "count": "Count",
+      "gender": "Gender",
+      "gender_count": "Count"
     }
   }
-  }
+}
