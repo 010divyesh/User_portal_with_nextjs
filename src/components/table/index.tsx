@@ -29,11 +29,11 @@ export default function Table() {
         _modified: number;
       }) => {
         user.created = new Date(user._created * 1000).toLocaleDateString(
-          "en-IN",
+          t("locale"),
           { day: "numeric", month: "long", year: "numeric" }
         );
         user.modified = new Date(user._modified * 1000).toLocaleDateString(
-          "en-IN",
+          t("locale"),
           { day: "numeric", month: "long", year: "numeric" }
         );
       }

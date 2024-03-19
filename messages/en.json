@@ -13,7 +13,8 @@
       "option": "More Option",
       "edit": "Edit",
       "delete": "Delete",
-      "search": "Search items"
+      "search": "Search items",
+      "locale":"en-IN"
     },
     "Form": {
       "name": "Name",
