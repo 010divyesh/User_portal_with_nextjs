@@ -7,6 +7,7 @@ import axios from "@/components/api";
 import "./style.css";
 import { useTranslations } from "next-intl";
 import classNames from "classnames";
+import Pagination from "../pagination";
 
 export default function Table() {
   const [users, setUsers] = useState<userDef[]>([]);
@@ -183,7 +184,7 @@ export default function Table() {
               </tbody>
             </table>
             {/* Pagination controls */}
-            <nav style={{ display: "flex", justifyContent: "center" }}>
+            {/* <nav style={{ display: "flex", justifyContent: "center" }}>
               <ul className="pagination">
                 <li
                   className={classNames("page-item", {
@@ -232,7 +233,14 @@ export default function Table() {
                   </button>
                 </li>
               </ul>
-            </nav>
+            </nav> */}
+             {!loading && (
+              <Pagination
+                currentPage={currentPage}
+                totalPages={Math.ceil(filteredUsers.length / usersPerPage)}
+                paginate={paginate}
+              />
+            )}
           </>
         )}
       </div>
