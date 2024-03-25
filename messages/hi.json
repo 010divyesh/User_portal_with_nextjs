@@ -15,7 +15,8 @@
        "edit": "संपादित करें",
        "delete": "हटाएं",
        "search":"आइटम खोजें",
-       "locale":"hi-IN"
+       "locale":"hi-IN",
+       "pagination_lang":"hi"
     },
     "Form":{
       "name":"नाम",

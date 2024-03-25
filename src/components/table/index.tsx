@@ -74,6 +74,8 @@ export default function Table() {
         )
       : users;
 
+  const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+
   // Logic to calculate pagination
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -183,62 +185,13 @@ export default function Table() {
                 ))}
               </tbody>
             </table>
-            {/* Pagination controls */}
-            {/* <nav style={{ display: "flex", justifyContent: "center" }}>
-              <ul className="pagination">
-                <li
-                  className={classNames("page-item", {
-                    disabled: currentPage === 1,
-                  })}
-                >
-                  <button
-                    className="page-link"
-                    onClick={() => paginate(currentPage - 1)}
-                    aria-label="Previous"
-                  >
-                    <span aria-hidden="true">&laquo;</span>
-                  </button>
-                </li>
-                {Array.from({
-                  length: Math.ceil(filteredUsers.length / usersPerPage),
-                }).map((_, index) => (
-                  <li
-                    key={index}
-                    className={classNames("page-item", {
-                      active: currentPage === index + 1,
-                    })}
-                  >
-                    <Link
-                      onClick={() => paginate(index + 1)}
-                      className="page-link"
-                      href="#"
-                    >
-                      {index + 1}
-                    </Link>
-                  </li>
-                ))}
-                <li
-                  className={classNames("page-item", {
-                    disabled:
-                      currentPage ===
-                      Math.ceil(filteredUsers.length / usersPerPage),
-                  })}
-                >
-                  <button
-                    className="page-link"
-                    onClick={() => paginate(currentPage + 1)}
-                    aria-label="Next"
-                  >
-                    <span aria-hidden="true">&raquo;</span>
-                  </button>
-                </li>
-              </ul>
-            </nav> */}
-             {!loading && (
+            {!loading && (
               <Pagination
+                key="pagination"
                 currentPage={currentPage}
-                totalPages={Math.ceil(filteredUsers.length / usersPerPage)}
+                totalPages={totalPages}
                 paginate={paginate}
+                locale={t("pagination_lang")}
               />
             )}
           </>

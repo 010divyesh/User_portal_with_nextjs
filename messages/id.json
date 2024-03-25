@@ -15,7 +15,8 @@
         "edit": "Sunting",
         "delete": "Hapus",
         "search":"Cari item",
-        "locale":"en-IN"
+        "locale":"en-IN",
+        "pagination_lang":"en"
       },
       "Form":{
         "name":"Nama",
